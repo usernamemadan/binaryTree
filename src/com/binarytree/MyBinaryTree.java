@@ -21,7 +21,7 @@ public class MyBinaryTree<K extends Comparable<K>> {
 		}
 		return current;
 	}
-	
+
 	void printNode() {
 		print(root);
 	}
@@ -34,6 +34,23 @@ public class MyBinaryTree<K extends Comparable<K>> {
 		print(currentnode.left);
 
 		print(currentnode.right);
+	}
+	
+	public void searchNodes(K key) {
+		this.search(key, root);
+	}
+	
+	void search(K key, MyBinaryNode<K> curr) {
+		if(curr == null) {
+			System.out.println("Node not found");
+			return;
+		}
+		int res = key.compareTo(curr.key);
+		if(res == 0) System.out.println(key+" is found");
+		else if(res<0) 
+			search(key,curr.left);
+		else 
+			search(key, curr.right);
 	}
 	
 	public int getSize() {
